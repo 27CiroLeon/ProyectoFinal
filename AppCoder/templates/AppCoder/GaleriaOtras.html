@@ -1,0 +1,44 @@
+{% extends 'AppCoder/inicio.html' %}
+
+{% block content %}
+
+
+
+
+
+<br>
+<br>
+
+<div class="container text-center">
+    <h1>Otras Peliculas de tu Preferencia</h1>
+</div>
+
+<br>
+<div class="container text-center">
+    <div class="row">
+            {% for otras in otras %}
+            <div class="col-sm-6 align-items-center">
+                <div class="card-body">
+                <img src="{{otras.imagenInstrumento.url}}" class="" width="100px">
+                {{otras.nombre}}
+                <a href="{% url 'otras' otras.id %}"><i class="bi bi-eye"></i></a>
+                {% if user.id == otras.usuario.id %}
+                <a href="{% url 'otras' otras.id %}"><i class="bi bi-pencil-fill"></i></a>
+                <a href="{% url 'otras' otras.id %}"><i class="bi bi-trash text-danger"></i></a>
+                <br>
+                <br>
+                <br>
+                <br>
+                {% endif %}  
+                </div>
+            </div>
+            {% endfor %}
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}

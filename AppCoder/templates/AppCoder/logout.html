@@ -1,0 +1,18 @@
+{% extends 'AppCoder/inicio.html' %}
+
+{% block content %}
+
+<br>
+<br>
+
+<div class="container text-center">
+    <h1>Has salido de la sesión</h1>
+</div>
+
+<div class="container text-center">
+    <p>Quieres <a href="{% url 'login' %}">iniciar sesión </a>de nuevo?</p>
+</div>
+
+<br>
+<br>
+{% endblock %}

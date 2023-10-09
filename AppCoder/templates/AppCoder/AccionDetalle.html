@@ -1,0 +1,43 @@
+{% extends 'AppCoder/inicio.html' %}
+
+{% block content %}
+
+<br>
+<br>
+
+<div class="container">
+
+<p><h4>{{accion.nombre}}</h4></p>
+
+{% if accion.imagenPeliculas %}
+    <p><img src="{{accion.imagenPeliculas.url}}" alt=""></p>
+{% endif %}
+<p>Marca: {{accion.region }}</p>
+<p>Modelo: {{accion.tipo}}</p>
+<p>Descripción: {{accion.descripcion}}</p>
+<p>Año: {{accion.duracion}}</p>
+<p>Precio(US$): {{accion.year}}</p>
+<p>Teléfono de Contacto: {{accion.telefonoContacto}}</p>
+<p>Email de Contacto: {{accion.emailContacto}}</p>
+
+</div>
+<br>
+<div class="container">
+    <h4>Comentarios...</h4>
+    <br>
+    <div class="container">
+    {% if not accion.comentarios.all %}
+        No han comentado esta pelicula
+    {% else %}
+        {% for comentario in accion.comentarios.all %}
+        <p><strong>{{comentario.nombre}}</strong></p>
+        <p>{{comentario.mensaje}}</p>
+        <p><small>{{comentario.fechaComentario}}</small></p>
+        <hr>
+        {% endfor %}
+    {% endif %}
+    <a href="{% url 'comentario' accion.pk %}">Agrega un Comentario</a>
+    </div>
+</div>
+<br>
+{% endblock %}

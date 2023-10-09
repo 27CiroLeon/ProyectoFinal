@@ -1,0 +1,45 @@
+{% extends 'AppCoder/inicio.html' %}
+
+{% block content %}
+
+<br>
+<br>
+
+
+
+
+
+<div class="container text-center">
+    <h1>Sesion de Pelis de Terror</h1>
+</div>
+
+<br>
+
+<div class="container text-center">
+    <div class="row">
+            {% for terror in terror %}
+            <div class="col-sm-6 align-items-center">
+                <div class="card-body">
+                <img src="{{terror.imagenPeliculas.url}}" class="" width="300px">
+                {{terror.nombre}}
+                <a href="{% url 'terror' terror.id %}"><i class="bi bi-eye"></i></a>
+                {% if user.id == terror.usuario.id %}
+                <a href="{% url 'terror' terror.id %}"><i class="bi bi-pencil-fill"></i></a>
+                <a href="{% url 'terror' terror.id %}"><i class="bi bi-trash text-danger"></i></a>
+                <br>
+                <br>
+                <br>
+                <br>
+                {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}

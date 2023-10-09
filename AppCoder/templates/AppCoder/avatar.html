@@ -1,0 +1,27 @@
+{% extends 'AppCoder/inicio.html' %}
+
+{% block content %}
+
+
+
+<div class="container text-center">
+
+<link rel="stylesheet" href="AppCoder/css/styles.css">
+  
+    <h1>Carga tu Avatar de sesion</h1>
+
+    <form actio="" method="post" enctype="multipart/form-data"> {% csrf_token %}
+
+        {{formulario.as_p}}
+
+        <button type="submit" class="btn btn-primary">Enviar</button>
+
+    </form>
+
+</div>
+
+
+    
+
+
+{% endblock %}

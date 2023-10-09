@@ -1,0 +1,42 @@
+{% extends 'AppCoder/inicio.html' %}
+
+{% block content %}
+
+<br>
+<br>
+
+<div class="container">
+
+<p><h4>{{terror.nombre}}</h4></p>
+{% if terror.imagenInstrumento %}
+    <p><img src="{{terror.imagenInstrumento.url}}" alt=""></p>
+{% endif %}
+<p>Marca: {{terror.marca}}</p>
+<p>Modelo: {{terror.modelo}}</p>
+<p>Descripción: {{terror.descripcion}}</p>
+<p>Año: {{terror.year}}</p>
+<p>Precio(US$): {{terror.precio}}</p>
+<p>Teléfono de Contacto: {{terror.telefonoContacto}}</p>
+<p>Email de Contacto: {{terror.emailContacto}}</p>
+
+</div>
+<br>
+<div class="container">
+    <h4>Comentarios...</h4>
+    <br>
+    <div class="container">
+    {% if not terror.comentarios.all %}
+        No han comentado este instrumento
+    {% else %}
+        {% for comentario in terror.comentarios.all %}
+        <p><strong>{{comentario.nombre}}</strong></p>
+        <p>{{comentario.mensaje}}</p>
+        <p><small>{{comentario.fechaComentario}}</small></p>
+        <hr>
+        {% endfor %}
+    {% endif %}
+    <a href="{% url 'comentario' terror.pk %}">Agrega un Comentario</a>
+    </div>
+</div>
+
+{% endblock %}

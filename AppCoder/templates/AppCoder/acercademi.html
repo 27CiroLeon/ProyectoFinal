@@ -1,0 +1,45 @@
+
+{% extends 'AppCoder/inicio.html' %}
+{% load static %}
+
+{% block content %}
+
+<br>
+<br>
+
+
+    <div class="container">
+       <h2 class="text-center text-dark">
+        <h1 class="fst-italic lh-1 mb-4">  Conoceme </h1>
+       </h2>
+       <br>
+       <div class="row g-4">
+           <div class="col-md-10 col-lg-8">
+               <div>
+                    <div class="card-body text-center">
+                        <img src="{% static 'assets/imagenes/CiroYo.jpeg' %}" class="rounded-circle mb-3" width="150px">
+                    <h3 class="card-title mb-3">Ciro Ivan Leon</h3>
+                    <p class="card-text">Analista de Datos Jr</p>
+                    <p class="card-text">Ingeniero de Sistemas:</p>
+
+                    </div>
+               </div>
+           </div>
+           <div>
+            <div>
+                 <div class="text-center">
+                    <p>Actualmente estoy radicado en Colombia, tengo 28 años, tengo experiencia como soporte de nivel 1 y 2, actualmente te tenido mas orientación en la parte 
+                        de infraestructura, pero quiero tener mas orientaciones comenzando a reforzar mas el aprendizaje sobre pyhthon, Gracias por visitar mi página y conocer mas de mi </p>
+                 </div>
+            </div>
+        </div>
+       </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+
+{% endblock %}

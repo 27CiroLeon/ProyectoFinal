@@ -1,0 +1,43 @@
+{% extends 'AppCoder/inicio.html' %}
+
+{% block content %}
+
+<br>
+<br>
+
+<div class="container">
+
+<p><h4>{{romanticas.nombre}}</h4></p>
+
+{% if romanticas.imagenPeliculas %}
+    <p><img src="{{romanticas.imagenPeliculas.url}}" alt=""></p>
+{% endif %}
+<p>Marca: {{romanticas.region }}</p>
+<p>Modelo: {{romanticas.tipo}}</p>
+<p>Descripción: {{romanticas.descripcion}}</p>
+<p>Año: {{romanticas.duracion}}</p>
+<p>Precio(US$): {{romanticas.year}}</p>
+<p>Teléfono de Contacto: {{romanticas.telefonoContacto}}</p>
+<p>Email de Contacto: {{romanticas.emailContacto}}</p>
+
+</div>
+<br>
+<div class="container">
+    <h4>Comentarios...</h4>
+    <br>
+    <div class="container">
+    {% if not romanticas.comentarios.all %}
+        No han comentado esta pelicula
+    {% else %}
+        {% for comentario in romanticas.comentarios.all %}
+        <p><strong>{{comentario.nombre}}</strong></p>
+        <p>{{comentario.mensaje}}</p>
+        <p><small>{{comentario.fechaComentario}}</small></p>
+        <hr>
+        {% endfor %}
+    {% endif %}
+    <a href="{% url 'comentario' comedia.pk %}">Agrega un Comentario</a>
+    </div>
+</div>
+<br>
+{% endblock %}

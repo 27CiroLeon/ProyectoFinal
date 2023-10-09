@@ -1,0 +1,43 @@
+{% extends 'AppCoder/inicio.html' %}
+
+{% block content %}
+
+<br>
+<br>
+
+<div class="container">
+
+<p><h4>{{comedia.nombre}}</h4></p>
+
+{% if comedia.imagenPeliculas %}
+    <p><img src="{{comedias.imagenPeliculas.url}}" alt=""></p>
+{% endif %}
+<p>Marca: {{comedia.region }}</p>
+<p>Modelo: {{comedia.tipo}}</p>
+<p>Descripción: {{comedia.descripcion}}</p>
+<p>Año: {{comedia.duracion}}</p>
+<p>Precio(US$): {{comedia.year}}</p>
+<p>Teléfono de Contacto: {{comedia.telefonoContacto}}</p>
+<p>Email de Contacto: {{comedia.emailContacto}}</p>
+
+</div>
+<br>
+<div class="container">
+    <h4>Comentarios...</h4>
+    <br>
+    <div class="container">
+    {% if not comedia.comentarios.all %}
+        No han comentado esta pelicula
+    {% else %}
+        {% for comentario in comedia.comentarios.all %}
+        <p><strong>{{comentario.nombre}}</strong></p>
+        <p>{{comentario.mensaje}}</p>
+        <p><small>{{comentario.fechaComentario}}</small></p>
+        <hr>
+        {% endfor %}
+    {% endif %}
+    <a href="{% url 'comentario' comedia.pk %}">Agrega un Comentario</a>
+    </div>
+</div>
+<br>
+{% endblock %}

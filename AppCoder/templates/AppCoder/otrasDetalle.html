@@ -1,0 +1,42 @@
+{% extends 'AppCoder/inicio.html' %}
+
+{% block content %}
+
+<br>
+<br>
+
+<div class="container">
+
+<p><h4>{{otras.nombre}}</h4></p>
+{% if otras.imagenInstrumento %}
+    <p><img src="{{otras.imagenInstrumento.url}}" alt=""></p>
+{% endif %}
+<p>Marca: {{otras.marca}}</p>
+<p>Modelo: {{otras.modelo}}</p>
+<p>Descripción: {{otras.descripcion}}</p>
+<p>Año: {{otras.year}}</p>
+<p>Precio(US$): {{otras.precio}}</p>
+<p>Teléfono de Contacto: {{otras.telefonoContacto}}</p>
+<p>Email de Contacto: {{otras.emailContacto}}</p>
+
+</div>
+<br>
+<div class="container">
+    <h4>Comentarios...</h4>
+    <br>
+    <div class="container">
+    {% if not otras.comentarios.all %}
+        No han comentado este instrumento
+    {% else %}
+        {% for comentario in otras.comentarios.all %}
+        <p><strong>{{comentario.nombre}}</strong></p>
+        <p>{{comentario.mensaje}}</p>
+        <p><small>{{comentario.fechaComentario}}</small></p>
+        <hr>
+        {% endfor %}
+    {% endif %}
+    <a href="{% url 'comentario' otras.pk %}">Agrega un Comentario</a>
+    </div>
+</div>
+
+{% endblock %}
